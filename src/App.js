@@ -1,27 +1,18 @@
-import $ from "jquery";
 import { useState } from "react";
 import PokemonList from "./PokemonList";
+import FetchPokemonsButton from "./FetchPokemonsButton";
 
 function App() {
   const [pokemons, setPokemons] = useState([]);
 
   return (
     <div>
-      <button
-        type="button"
-        onClick={() => {
-          const promise = $.ajax({
-            type: "GET",
-            url: "https://pokeapi.co/api/v2/pokemon",
-          });
-
-          promise.then((response) => {
-            setPokemons(response.results);
-          });
+      <FetchPokemonsButton
+        text="Show Pokemon"
+        onFetch={(pokemons) => {
+          setPokemons(pokemons);
         }}
-      >
-        Show Pokemon
-      </button>
+      />
 
       <PokemonList pokemons={pokemons} />
     </div>
