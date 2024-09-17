@@ -1,5 +1,6 @@
 import $ from "jquery";
 import { useState } from "react";
+import PokemonList from "./PokemonList";
 
 function App() {
   const [pokemons, setPokemons] = useState([]);
@@ -22,13 +23,7 @@ function App() {
         Show Pokemon
       </button>
 
-      {pokemons.length > 0 && (
-        <ul>
-          {pokemons.map((pokemon) => {
-            return <li key={pokemon.name}>{pokemon.name}</li>;
-          })}
-        </ul>
-      )}
+      <PokemonList pokemons={pokemons} />
     </div>
   );
 }
